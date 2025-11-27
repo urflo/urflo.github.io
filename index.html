@@ -4,128 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descubrí Argentina</title>
+
     <style>
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #97b7ff, #ffffff);
+            font-family: Arial, sans-serif;
+            background: #f6f6f6;
         }
 
-        header {
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HERO */
+        .hero {
+            height: 70vh;
+            background-image: url('https://images.unsplash.com/photo-1509644851169-2acc08aa25b1');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 60px 20px 30px;
+            padding: 20px;
         }
 
-        h1 {
+        .hero h1 {
             font-size: 3rem;
-            margin: 0;
-            font-weight: 700;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px black;
+        }
+
+        /* DESTINOS */
+        .destinos, .experiencias, .itinerarios {
+            width: 90%;
+            margin: auto;
+            padding: 40px 0;
         }
 
         h2 {
-            margin-top: 10px;
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
-            padding: 20px 40px;
         }
 
         .card {
-            position: relative;
+            background: white;
+            border-radius: 10px;
             overflow: hidden;
-            border-radius: 12px;
-            cursor: pointer;
-            height: 250px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
         }
 
         .card img {
             width: 100%;
-            height: 100%;
+            height: 160px;
             object-fit: cover;
-            filter: brightness(70%);
-            transition: filter 0.3s ease;
         }
 
-        .card:hover img {
-            filter: brightness(55%);
+        .card:hover {
+            transform: scale(1.02);
         }
 
-        .card-title {
+        .card h3 {
+            margin: 10px;
+        }
+
+        .card p {
+            margin: 0 10px 15px;
+            color: #555;
+        }
+
+        /* CARRUSEL */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            height: 250px;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel button {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.75);
-            padding: 10px 25px;
-            border-radius: 10px;
-            font-weight: 600;
-            backdrop-filter: blur(4px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.4);
+            border: none;
+            color: white;
+            font-size: 25px;
+            padding: 10px;
+            cursor: pointer;
         }
 
-        @media(max-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .left {
+            left: 10px;
         }
 
-        @media(max-width: 600px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            h1 { font-size: 2.2rem; }
+        .right {
+            right: 10px;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Descubrí Argentina</h1>
-    <h2>PAQUETES TURÍSTICOS</h2>
-</header>
+    <!-- NAV -->
+    <nav>
+        <div>Argentina Turismo</div>
+        <div>
+            <a href="#">Inicio</a>
+            <a href="#destinos">Destinos</a>
+            <a href="#experiencias">Experiencias</a>
+            <a href="#itinerarios">Itinerarios</a>
+        </div>
+    </nav>
 
-<section class="grid">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1555992336-03a23c9463ef" alt="Gastronomía">
-        <div class="card-title">Gastronomía</div>
-    </div>
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <div>
+            <h1>Descubrí Argentina</h1>
+            <p>Naturaleza, cultura y aventura en un solo lugar.</p>
+        </div>
+    </section>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1508264165352-258859e62245" alt="Destinos">
-        <div class="card-title">Destinos</div>
-    </div>
+    <!-- DESTINOS DESTACADOS -->
+    <section id="destinos" class="destinos">
+        <h2>Destinos destacados</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1546554137-f86b9593a222" alt="El Chaltén">
+                <h3>El Chaltén</h3>
+                <p>Capital nacional del trekking, rodeada de montañas.</p>
+            </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1526401485004-2aa7e2f3a8be" alt="Historia">
-        <div class="card-title">Historia</div>
-    </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1508261303786-df3f4f08f127" alt="Cataratas del Iguazú">
+                <h3>Cataratas del Iguazú</h3>
+                <p>Una de las maravillas naturales más impresionantes del planeta.</p>
+            </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1600047509807-75e0d0a73e7f" alt="Hospedaje">
-        <div class="card-title">Hospedaje</div>
-    </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1589884710927-2cc5a62888e9" alt="Mendoza">
+                <h3>Mendoza</h3>
+                <p>Tierra del Malbec y las rutas del vino.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b" alt="Cultura">
-        <div class="card-title">Cultura</div>
-    </div>
+    <!-- EXPERIENCIAS (CARRUSEL) -->
+    <section id="experiencias" class="experiencias">
+        <h2>Experiencias</h2>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" alt="Paisajes">
-        <div class="card-title">Paisajes</div>
-    </div>
-</section>
+        <div class="carousel">
+            <img src="https://images.unsplash.com/photo-1526401485004-2aa7e2f3a8be" class="active">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461">
+
+            <button class="left" onclick="moveSlide(-1)">❮</button>
+            <button class="right" onclick="moveSlide(1)">❯</button>
+        </div>
+    </section>
+
+    <!-- ITINERARIOS -->
+    <section id="itinerarios" class="itinerarios">
+        <h2>Itinerarios recomendados</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+                <h3>Patagonia en 10 días</h3>
+                <p>Glaciares, lagos y montañas inolvidables.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1601758125946-6ec2bc44f44f">
+                <h3>Norte Argentino</h3>
+                <p>Pueblos históricos, montañas de colores y tradición.</p>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1520975918318-3b37a5a54d81">
+                <h3>Buenos Aires</h3>
+                <p>Cultura, arquitectura y la mejor gastronomía.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SCRIPT CARRUSEL -->
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll('.carousel img');
+
+        function moveSlide(step) {
+            images[index].classList.remove('active');
+            index = (index + step + images.length) % images.length;
+            images[index].classList.add('active');
+        }
+
+        setInterval(() => moveSlide(1), 5000);
+    </script>
 
 </body>
 </html>
